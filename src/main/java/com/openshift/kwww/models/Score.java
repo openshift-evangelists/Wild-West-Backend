@@ -1,18 +1,17 @@
 package com.openshift.kwww.models;
 
-
-import java.util.concurrent.atomic.AtomicLong;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-
-
-
 public class Score {
 
     private int score;
+    private String gameID;
 
-    public Score() {
+    public String getGameID() {
+		return gameID;
+	}
+	public void setGameID(String gameID) {
+		this.gameID = gameID;
+	}
+	public Score() {
         this.score = 0;
     }
     public void setScore(int score) {

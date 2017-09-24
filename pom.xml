@@ -5,7 +5,7 @@
 
 	<groupId>com.openshift</groupId>
 	<artifactId>kwww</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0</version>
 	<packaging>jar</packaging>
 
 	<name>kwww</name>
