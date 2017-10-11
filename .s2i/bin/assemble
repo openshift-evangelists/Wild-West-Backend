@@ -1,6 +1,6 @@
 #!/bin/bash
 
-/usr/libexec/s2i/assemble
+source /usr/lib/s2i/assemble
 
 function install_jrebel() {
   local nullglobopt=$(shopt -p nullglob)
@@ -36,5 +36,5 @@ function install_jrebel() {
   return 0
 }
 
-DEPLOY_DIR=/opt/app-root/src
+DEPLOY_DIR=/deployments
 install_jrebel $DEPLOY_DIR
