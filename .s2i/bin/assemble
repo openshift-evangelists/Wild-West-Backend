@@ -23,7 +23,7 @@ function install_jrebel() {
   local jrzip=$(basename "$url")
   echo "JRebel: Latest version is $version"
   
-  pushd ${HOME} &> /dev/null
+  pushd /deployments &> /dev/null
   
   echo "JRebel: Downloading $url ..."
   curl -sO "$url"
