@@ -9,7 +9,7 @@ import com.openshift.kwww.models.Game;
 import com.openshift.kwww.models.Score;
 
 @RestController
-public class ScoreController {
+public class APIController {
 	@Autowired
 	private GameController gameController;
 

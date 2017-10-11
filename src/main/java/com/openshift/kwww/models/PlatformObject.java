@@ -1,9 +1,9 @@
 package com.openshift.kwww.models;
 
-public class OpenShiftObject {
+public class PlatformObject {
 
 	private String objectID;
-	private String objectType;
+	private String objectName;
 	
 	public String getObjectID() {
 		return objectID;
@@ -12,9 +12,9 @@ public class OpenShiftObject {
 		this.objectID = objectID;
 	}
 	public String getObjectType() {
-		return objectType;
+		return objectName;
 	}
 	public void setObjectType(String objectType) {
-		this.objectType = objectType;
+		this.objectName = objectType;
 	}
 }
