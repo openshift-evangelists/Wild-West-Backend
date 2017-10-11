@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source /usr/local/s2i/assemble
+/usr/local/s2i/assemble
 
 function install_jrebel() {
   local nullglobopt=$(shopt -p nullglob)
