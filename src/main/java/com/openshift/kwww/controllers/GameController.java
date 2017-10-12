@@ -69,11 +69,12 @@ public class GameController {
 		}
 		return gameMode;
 	}
-	
+	/*
 	private PlatformObject getRandomObject() {
 		PlatformObject randomObject = new PlatformObject();
 		
 		return randomObject;
 	}
+	*/
 
 }
