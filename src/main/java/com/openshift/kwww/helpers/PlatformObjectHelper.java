@@ -1,26 +1,13 @@
 package com.openshift.kwww.helpers;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Hashtable;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-
-import com.openshift.kwww.models.Game;
 import com.openshift.kwww.models.PlatformObject;
-import com.openshift.kwww.models.Score;
 
-import io.fabric8.kubernetes.api.model.KubernetesResource;
 import io.fabric8.kubernetes.api.model.PersistentVolumeClaim;
 import io.fabric8.kubernetes.api.model.Pod;
-import io.fabric8.kubernetes.api.model.PodList;
 import io.fabric8.kubernetes.api.model.Service;
-import io.fabric8.kubernetes.api.model.ServiceList;
-import io.fabric8.kubernetes.client.dsl.ClientKubernetesListMixedOperation;
 import io.fabric8.openshift.api.model.Build;
 import io.fabric8.openshift.api.model.BuildConfig;
 import io.fabric8.openshift.api.model.DeploymentConfig;
@@ -28,17 +15,16 @@ import io.fabric8.openshift.api.model.Route;
 import io.fabric8.openshift.client.DefaultOpenShiftClient;
 import io.fabric8.openshift.client.OpenShiftClient;
 
-
 public class PlatformObjectHelper {
-	
+
 	private OpenShiftClient client;
 
 	public PlatformObjectHelper() {
 		client = new DefaultOpenShiftClient();
 	}
-	
+
 	public List<PlatformObject> getPlatformObjects() {
-		
+
 		ArrayList<PlatformObject> platformObjects = new ArrayList<>();
 		platformObjects.addAll(this.getPods());
 		platformObjects.addAll(this.getBuilds());
@@ -47,79 +33,83 @@ public class PlatformObjectHelper {
 		platformObjects.addAll(this.getPVs());
 		platformObjects.addAll(this.getServices());
 		platformObjects.addAll(this.getRoutes());
-		
+
 		return platformObjects;
-		
+
 	}
-	
+
 	private List<PlatformObject> getPods() {
 		ArrayList<PlatformObject> thePods = new ArrayList<>();
-		
+
 		List<Pod> pods = client.pods().list().getItems();
 		for (Pod currPod : pods) {
 			thePods.add(new PlatformObject(currPod.getMetadata().getUid(), currPod.getMetadata().getName(), "POD"));
-    	}
-		
+		}
+
 		return thePods;
 	}
-	
+
 	private List<PlatformObject> getBuilds() {
 		ArrayList<PlatformObject> theBuilds = new ArrayList<>();
-		
+
 		List<Build> builds = client.builds().list().getItems();
 		for (Build currBuild : builds) {
-			theBuilds.add(new PlatformObject(currBuild.getMetadata().getUid(), currBuild.getMetadata().getName(), "BUILD"));
-    	}
-		
+			theBuilds.add(
+					new PlatformObject(currBuild.getMetadata().getUid(), currBuild.getMetadata().getName(), "BUILD"));
+		}
+
 		return theBuilds;
 	}
-	
+
 	private List<PlatformObject> getDeploymentConfigs() {
 		ArrayList<PlatformObject> theDeployments = new ArrayList<>();
 		List<DeploymentConfig> deploymentConfigs = client.deploymentConfigs().list().getItems();
 		for (DeploymentConfig currConfig : deploymentConfigs) {
-			theDeployments.add(new PlatformObject(currConfig.getMetadata().getUid(), currConfig.getMetadata().getName(), "DEPLOYMENT_CONFIG"));
-    	}
-		
+			theDeployments.add(new PlatformObject(currConfig.getMetadata().getUid(), currConfig.getMetadata().getName(),
+					"DEPLOYMENT_CONFIG"));
+		}
+
 		return theDeployments;
 	}
-	
+
 	private List<PlatformObject> getBuildConfigs() {
 		ArrayList<PlatformObject> theList = new ArrayList<>();
 		List<BuildConfig> theItems = client.buildConfigs().list().getItems();
 		for (BuildConfig currConfig : theItems) {
-			theList.add(new PlatformObject(currConfig.getMetadata().getUid(), currConfig.getMetadata().getName(), "BUILD CONFIG"));
-    	}
+			theList.add(new PlatformObject(currConfig.getMetadata().getUid(), currConfig.getMetadata().getName(),
+					"BUILD CONFIG"));
+		}
 		return theList;
 	}
-	
+
 	private List<PlatformObject> getPVs() {
 		ArrayList<PlatformObject> theList = new ArrayList<>();
 		List<PersistentVolumeClaim> theItems = client.persistentVolumeClaims().list().getItems();
 		for (PersistentVolumeClaim currConfig : theItems) {
-			theList.add(new PlatformObject(currConfig.getMetadata().getUid(), currConfig.getMetadata().getName(), "PVC"));
-    	}
+			theList.add(
+					new PlatformObject(currConfig.getMetadata().getUid(), currConfig.getMetadata().getName(), "PVC"));
+		}
 		return theList;
 	}
-	
+
 	private List<PlatformObject> getServices() {
 		ArrayList<PlatformObject> theList = new ArrayList<>();
 		List<Service> theItems = client.services().list().getItems();
 		for (Service currConfig : theItems) {
-			theList.add(new PlatformObject(currConfig.getMetadata().getUid(), currConfig.getMetadata().getName(), "SERVICE"));
-    	}
+			theList.add(new PlatformObject(currConfig.getMetadata().getUid(), currConfig.getMetadata().getName(),
+					"SERVICE"));
+		}
 		return theList;
 	}
-	
+
 	private List<PlatformObject> getRoutes() {
 		ArrayList<PlatformObject> theList = new ArrayList<>();
 		List<Route> theItems = client.routes().list().getItems();
 		for (Route currConfig : theItems) {
-			theList.add(new PlatformObject(currConfig.getMetadata().getUid(), currConfig.getMetadata().getName(), "ROUTE"));
-    	}
+			theList.add(
+					new PlatformObject(currConfig.getMetadata().getUid(), currConfig.getMetadata().getName(), "ROUTE"));
+		}
 		return theList;
 	}
-	
-	
 
 }
