@@ -82,7 +82,7 @@ public class PlatformObjectHelper {
 		List<BuildConfig> theItems = client.buildConfigs().list().getItems();
 		for (BuildConfig currConfig : theItems) {
 			theList.add(new PlatformObject(currConfig.getMetadata().getUid(), currConfig.getMetadata().getName(),
-					"BUILD CONFIG"));
+					"BUILD_CONFIG"));
 		}
 		return theList;
 	}
