@@ -6,13 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.web.bind.annotation.CrossOrigin;
 import com.openshift.kwww.helpers.PlatformObjectHelper;
 import com.openshift.kwww.models.Game;
 import com.openshift.kwww.models.Score;
 import com.openshift.kwww.models.PlatformObject;
 
-@CrossOrigin(maxAge = 3600)
+@CrossOrigin(origins = "*")
 @RestController
 public class APIController {
 	@Autowired
