@@ -2,9 +2,8 @@ package com.openshift.kwww.helpers;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Random;
 import com.openshift.kwww.models.PlatformObject;
-
 import io.fabric8.kubernetes.api.model.PersistentVolumeClaim;
 import io.fabric8.kubernetes.api.model.Pod;
 import io.fabric8.kubernetes.api.model.Service;
@@ -36,6 +35,12 @@ public class PlatformObjectHelper {
 
 		return platformObjects;
 
+	}
+
+	public PlatformObject getRandomPlatformObject() {
+		List<PlatformObject> theObjects = this.getPlatformObjects();
+
+		return theObjects.get(new Random().nextInt(theObjects.size()));
 	}
 
 	private List<PlatformObject> getPods() {

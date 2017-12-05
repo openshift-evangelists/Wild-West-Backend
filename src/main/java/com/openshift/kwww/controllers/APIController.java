@@ -38,6 +38,12 @@ public class APIController {
 		PlatformObjectHelper helper = new PlatformObjectHelper();
 		return helper.getPlatformObjects();
 	}
+
+	@RequestMapping("/getRandomObject")
+	public PlatformObject getRandomPlatformObject() {
+		PlatformObjectHelper helper = new PlatformObjectHelper();
+		return helper.getRandomPlatformObject();
+	}
 	
 
 }
