@@ -12,6 +12,7 @@ import com.openshift.kwww.models.Game;
 import com.openshift.kwww.models.Score;
 import com.openshift.kwww.models.PlatformObject;
 
+@CrossOrigin(maxAge = 3600)
 @RestController
 public class APIController {
 	@Autowired
