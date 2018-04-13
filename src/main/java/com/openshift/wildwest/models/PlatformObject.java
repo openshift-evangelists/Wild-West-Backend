@@ -1,4 +1,4 @@
-package com.openshift.kwww.models;
+package com.openshift.wildwest.models;
 
 public class PlatformObject {
 

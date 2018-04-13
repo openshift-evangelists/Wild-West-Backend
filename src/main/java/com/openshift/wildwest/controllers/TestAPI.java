@@ -1,4 +1,4 @@
-package com.openshift.kwww.controllers;
+package com.openshift.wildwest.controllers;
 
 import java.util.ArrayList;
 import java.util.Hashtable;
@@ -17,7 +17,7 @@ public class TestAPI {
 
 	private OpenShiftClient client;
 
-	// oc policy add-role-to-user view system:serviceaccount:kwww:default where kwww
+	// oc policy add-role-to-user view system:serviceaccount:wildwest:default where wildwest
 	// is the project name
 	@RequestMapping("/kube")
 	public Hashtable getPlatformObjects() {

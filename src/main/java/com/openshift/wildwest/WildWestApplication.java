@@ -1,12 +1,12 @@
-package com.openshift.kwww;
+package com.openshift.wildwest;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class KwwwApplication {
+public class WildWestApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(KwwwApplication.class, args);
+		SpringApplication.run(WildWestApplication.class, args);
 	}
 }

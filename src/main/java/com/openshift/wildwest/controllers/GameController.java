@@ -1,11 +1,11 @@
-package com.openshift.kwww.controllers;
+package com.openshift.wildwest.controllers;
 
 import java.util.Hashtable;
 import java.util.Random;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 
-import com.openshift.kwww.models.*;
+import com.openshift.wildwest.models.*;
 
 @Configuration
 @Scope(value = "singleton")

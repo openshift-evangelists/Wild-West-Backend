@@ -1,9 +1,9 @@
-package com.openshift.kwww.helpers;
+package com.openshift.wildwest.helpers;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import com.openshift.kwww.models.PlatformObject;
+import com.openshift.wildwest.models.PlatformObject;
 import io.fabric8.kubernetes.api.model.PersistentVolumeClaim;
 import io.fabric8.kubernetes.api.model.Pod;
 import io.fabric8.kubernetes.api.model.Service;

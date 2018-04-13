@@ -4,12 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.openshift</groupId>
-	<artifactId>kwww</artifactId>
+	<artifactId>wildwest</artifactId>
 	<version>1.0</version>
 	<packaging>jar</packaging>
 
-	<name>kwww</name>
-	<description>kwww</description>
+	<name>wildwest</name>
+	<description>wildwest</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
