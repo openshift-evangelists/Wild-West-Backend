@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 
 import com.openshift.wildwest.models.*;
+import com.openshift.wildwest.models.Game.GameMode;
 
 @Configuration
 @Scope(value = "singleton")
@@ -45,11 +46,12 @@ public class GameController {
 		return gameID.toString();
 	}
 
-	private int determineGameMode() {
-		// gameMode = 0 = Kubenernetes
-		// gameMode = 1 = OpenShift
+	private GameMode determineGameMode() {
+		GameMode currentMode = GameMode.OPENSHIFT;
 
-		int gameMode = 1;
+		// For now, the game mode is determine by an environment variable in the backend pod named GAME_MODE
+		// Given that most people will be using OpenShift as their distribution for this game, a sane default
+		// of OpenShift was chosen and will be used if no environment variable is defined.
 		if (System.getenv().containsKey("GAME_MODE")) {
 			// possible game mode options are kube, k, kubernetes, openshift
 			String gameEnvironmentVariable = System.getenv("GAME_MODE");
@@ -57,17 +59,13 @@ public class GameController {
 			case "kube":
 			case "kubernetes":
 			case "k":
-				gameMode = 0;
-				break;
-			case "openshift":
-			case "OpenShift":
-				gameMode = 1;
+				currentMode = GameMode.KUBERNETES;
 				break;
 			default:
-				gameMode = 1;
+				currentMode = GameMode.OPENSHIFT;
 			}
 		}
-		return gameMode;
+		return currentMode;
 	}
 	/*
 	private PlatformObject getRandomObject() {

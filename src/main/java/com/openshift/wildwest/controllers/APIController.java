@@ -44,6 +44,16 @@ public class APIController {
 		PlatformObjectHelper helper = new PlatformObjectHelper();
 		return helper.getRandomPlatformObject();
 	}
-	
 
+	@CrossOrigin
+	@RequestMapping("/deleteObject")
+	public void deletePlatformObject(@RequestParam(value = "gameID") String gameID, 
+							@RequestParam(value = "objectID") String objectID, 
+							@RequestParam(value = "objectType") String objectType,
+							@RequestParam(value = "objectName") String objectName) {
+
+		PlatformObjectHelper helper = new PlatformObjectHelper();
+		helper.deletePlatformObject(gameID, objectID, objectType, objectName);
+	}
+	
 }

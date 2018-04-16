@@ -8,10 +8,13 @@ public class Game {
 	private Hashtable<String, PlatformObject> gameObjects;
 	// The game mode determines if we are returning Kube only objects or OpenShift
 	// objects as well
-	// gameMode = 0 = Kubenernetes
-	// gameMode = 1 = OpenShift
-	private int gameMode = 0;
+	
+	public enum GameMode {
+		OPENSHIFT, KUBERNETES;
+	}
 
+	public GameMode mode = GameMode.OPENSHIFT;
+	
 	public Game() {
 		score = new Score();
 		gameObjects = new Hashtable<>();
@@ -35,12 +38,12 @@ public class Game {
 		gameObjects.remove(theObject.getObjectID());
 	}
 
-	public int getGameMode() {
-		return gameMode;
+	public GameMode getGameMode() {
+		return mode;
 	}
 
-	public void setGameMode(int gameMode) {
-		this.gameMode = gameMode;
+	public void setGameMode(GameMode mode) {
+		this.mode = mode;
 	}
 
 }

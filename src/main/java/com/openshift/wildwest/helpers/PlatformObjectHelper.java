@@ -39,6 +39,7 @@ public class PlatformObjectHelper {
 
 	public PlatformObject getRandomPlatformObject() {
 		List<PlatformObject> theObjects = this.getPlatformObjects();
+		
 
 		return theObjects.get(new Random().nextInt(theObjects.size()));
 	}
@@ -50,7 +51,6 @@ public class PlatformObjectHelper {
 		for (Pod currPod : pods) {
 			thePods.add(new PlatformObject(currPod.getMetadata().getUid(), currPod.getMetadata().getName(), "POD"));
 		}
-
 		return thePods;
 	}
 
@@ -115,6 +115,20 @@ public class PlatformObjectHelper {
 					new PlatformObject(currConfig.getMetadata().getUid(), currConfig.getMetadata().getName(), "ROUTE"));
 		}
 		return theList;
+	}
+
+	public void deletePlatformObject(String gameID, String objectID, String objectType, String objectName) {
+
+		// right now only delete things we can recover from
+		switch (objectType) {
+			case "POD":
+				client.pods().withName(objectName).delete();
+				break;
+			case "BUILD":
+				client.builds().withName(objectName).delete();
+				break;
+		}
+		
 	}
 
 }
