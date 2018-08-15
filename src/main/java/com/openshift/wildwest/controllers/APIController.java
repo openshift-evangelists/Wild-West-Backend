@@ -12,6 +12,14 @@ import com.openshift.wildwest.models.Game;
 import com.openshift.wildwest.models.Score;
 import com.openshift.wildwest.models.PlatformObject;
 
+
+	// oc policy add-role-to-user view system:serviceaccount:wildwest:default where wildwest
+	// is the project name
+
+	// To enable destructrive mode, a different permission needs to be added 
+	// oc policy add-role-to-user edit system:serviceaccount:wildwest:default
+
+	
 @CrossOrigin(origins = "*")
 @RestController
 public class APIController {
