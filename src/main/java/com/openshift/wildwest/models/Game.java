@@ -6,7 +6,7 @@ public class Game {
 
 	private Score score;
 	private Hashtable<String, PlatformObject> gameObjects;
-	// The game mode determines if we are returning Kube only objects or OpenShift
+	// The game mode determines if we are returning Kubernetes only objects or OpenShift
 	// objects as well
 	
 	public enum GameMode {
