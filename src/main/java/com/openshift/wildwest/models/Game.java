@@ -56,12 +56,14 @@ public class Game {
 
   public static void initializeObjects(Map<String, GameObject> map) {
     for (int i = 1; i <= NUM_OBJECTS; i++) {
-      map.put("pacman-blue-" + i, new GameObject("pacman-blue-" + i, "pacman-blue-" + i, "pacman-blue", "Blue pacman",
-          "You've killed a blue pacman. It's value is 10", 10));
-      map.put("pacman-red-" + i, new GameObject("pacman-red-" + i, "pacman-red-" + i, "pacman-red", "Red pacman",
-          "You've killed a Red pacman. It's value is 20", 20));
-      map.put("pacman-pink-" + i, new GameObject("pacman-pink-" + i, "pacman-pink-" + i, "pacman-pink", "Pink pacman",
-          "You've killed a pink pacman. It's value is 50", 50));
+      map.put("item1-" + i, new GameObject("item1-" + i, "item1-" + i, "item1", "Item 1",
+          "You've killed an object with value of 10", 10));
+      map.put("item2-" + i, new GameObject("item2-" + i, "item2-" + i, "item2", "Item 2",
+          "You've killed an object with value of 20", 20));
+      map.put("item3-" + i, new GameObject("item3-" + i, "item3-" + i, "item3", "Item 3",
+          "You've killed an object with value of 50", 50));
+      map.put("item4-" + i, new GameObject("item4-" + i, "item4-" + i, "item4", "Item 4",
+          "You've killed an object with value of 100", 100));
     }
   }
 
