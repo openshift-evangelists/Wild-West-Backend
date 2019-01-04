@@ -1,74 +1,52 @@
 package com.openshift.wildwest.models;
 
+import java.util.Objects;
+
 public class GameObject {
 
   private String id;
-  private String name;
-  private String type;
-  private String description;
-  private String killHelp;
-  private int value;
+  private GameObjectType type;
 
-  public GameObject(String objectID, String objectName, String objectType) {
+  public GameObject(String objectID, GameObjectType objectType) {
     this.id = objectID;
-    this.name = objectName;
     this.type = objectType;
-  }
-
-  public GameObject(String objectID, String objectName, String objectType, String description, String killHelp,
-      int value) {
-    this(objectID, objectName, objectType);
-    this.description = description;
-    this.killHelp = killHelp;
-    this.value = value;
   }
 
   public String getId() {
     return id;
   }
 
-  public void setId(String objectID) {
-    this.id = objectID;
+  public void setId(String id) {
+    this.id = id;
   }
 
-  public String getType() {
+  public GameObjectType getType() {
     return type;
   }
 
-  public void setType(String objectType) {
-    this.type = objectType;
+  public void setType(GameObjectType type) {
+    this.type = type;
   }
 
-  public String getName() {
-    return name;
+  @Override
+  public String toString() {
+    return "GameObject{" +
+        "id='" + id + '\'' +
+        ", type=" + type +
+        '}';
   }
 
-  public void setName(String objectName) {
-    this.name = objectName;
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    GameObject that = (GameObject) o;
+    return Objects.equals(id, that.id) &&
+        Objects.equals(type, that.type);
   }
 
-  public String getDescription() {
-    return description;
+  @Override
+  public int hashCode() {
+    return Objects.hash(id, type);
   }
-
-  public void setDescription(String param) {
-    this.description = param;
-  }
-
-  public String getKillHelp() {
-    return killHelp;
-  }
-
-  public void setKillHelp(String param) {
-    this.killHelp = param;
-  }
-
-  public int getValue() {
-    return value;
-  }
-
-  public void setValue(int param) {
-    this.value = param;
-  }
-
 }

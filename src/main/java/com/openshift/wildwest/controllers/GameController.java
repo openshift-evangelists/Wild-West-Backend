@@ -1,35 +1,23 @@
 package com.openshift.wildwest.controllers;
 
-import java.util.HashMap;
+import com.openshift.wildwest.models.Game;
+import com.openshift.wildwest.models.GameObject;
+import com.openshift.wildwest.models.GameType;
+
 import java.util.Map;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Scope;
 
-import com.openshift.wildwest.models.*;
+public interface GameController {
+  Game createGame();
 
-@Configuration
-@Scope(value = "singleton")
-public class GameController {
+  Game createGame(String username, GameType type);
 
-  private final Map<String, Game> games = new HashMap<String, Game>();
+  Game getGame(String gameId);
 
-  public Game createGame() {
-    Game newGame = new Game();
-    games.put(newGame.getGameId(), newGame);
-    return newGame;
-  }
+  Boolean stopGame(String gameId);
 
-  public Game createGame(String gameId) {
-    Game newGame = new Game(gameId);
-    games.put(gameId, newGame);
-    return newGame;
-  }
+  GameObject getObject(String gameId);
 
-  public Game getGame(String gameID) {
-    return this.games.get(gameID);
-  }
+  Boolean deleteObject(String gameId, String objectId);
 
-  public void deleteGame(String gameID) {
-    this.games.remove(gameID);
-  }
+  Map<String, Game> getTopScores();
 }

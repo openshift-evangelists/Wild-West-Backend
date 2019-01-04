@@ -1,70 +1,92 @@
 package com.openshift.wildwest.models;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class Game {
 
-  private String gameId;
-  private Score score;
-  private Map<String, GameObject> gameObjects = new HashMap<String, GameObject>();
+  private String id;
+  private String username;
+  private int score;
+  private int level;
+  private GameType type;
+  @JsonIgnore
+  private transient List<GameObject> objects;
 
-  public Game() {
-    this(Game.generateGameID());
+  public Game(String username, GameType type) {
+    this.id = generateGameID();
+    this.username = username;
+    this.score = 0;
+    this.level = 1;
+    this.type = type;
+    this.objects = new ArrayList<GameObject>();
   }
 
-  public Game(String gameId) {
-    this.gameId = gameId;
-    score = new Score(gameId);
-    initializeObjects(gameObjects);
+  public String getId() {
+    return id;
   }
 
-  public Collection<GameObject> getObjects() {
-    return gameObjects.values();
+  public void setId(String id) {
+    this.id = id;
   }
 
-  public GameObject getRandomObject() {
-    Random generator = new Random();
-    Object[] values = gameObjects.values().toArray();
-    GameObject randomValue = (GameObject) values[generator.nextInt(values.length)];
-    return randomValue;
+  public String getUsername() {
+    return username;
   }
 
-  public String getGameId() {
-    return gameId;
+  public void setUsername(String username) {
+    this.username = username;
   }
 
-  public void setGameId(String gameId) {
-    this.gameId = gameId;
-  }
-
-  public Score getScore() {
+  public int getScore() {
     return score;
   }
 
-  public void setScore(Score score) {
+  public void setScore(int score) {
     this.score = score;
   }
 
-  public void removeObject(String objectId) {
-    gameObjects.remove(objectId);
+  public int getLevel() {
+    return level;
   }
 
-  public static final int NUM_OBJECTS = 2;
+  public void setLevel(int level) {
+    this.level = level;
+  }
 
-  public static void initializeObjects(Map<String, GameObject> map) {
-    for (int i = 1; i <= NUM_OBJECTS; i++) {
-      map.put("item1-" + i, new GameObject("item1-" + i, "item1-" + i, "item1", "Item 1",
-          "You've killed an object with value of 10", 10));
-      map.put("item2-" + i, new GameObject("item2-" + i, "item2-" + i, "item2", "Item 2",
-          "You've killed an object with value of 20", 20));
-      map.put("item3-" + i, new GameObject("item3-" + i, "item3-" + i, "item3", "Item 3",
-          "You've killed an object with value of 50", 50));
-      map.put("item4-" + i, new GameObject("item4-" + i, "item4-" + i, "item4", "Item 4",
-          "You've killed an object with value of 100", 100));
+  public GameType getType() {
+    return type;
+  }
+
+  public void setType(GameType type) {
+    this.type = type;
+  }
+
+  public List<GameObject> getObjects() {
+    return objects;
+  }
+
+  public void setObjects(List<GameObject> objects) {
+    this.objects = objects;
+  }
+
+  @JsonIgnore
+  public GameObject getRandomObject(){
+    Random rand = new Random();
+    return objects.get(rand.nextInt(objects.size()));
+  }
+
+  public Boolean removeObject(String objectId){
+    for (GameObject o: objects){
+      if (o.getId().equals(objectId)){
+        objects.remove(o);
+        return Boolean.TRUE;
+      }
     }
+    return Boolean.FALSE;
   }
 
   private static String generateGameID() {
@@ -75,7 +97,18 @@ public class Game {
       int index = (int) (rnd.nextFloat() * randomChars.length());
       gameID.append(randomChars.charAt(index));
     }
-
     return gameID.toString();
+  }
+
+  @Override
+  public String toString() {
+    return "Game{" +
+        "id='" + id + '\'' +
+        ", username='" + username + '\'' +
+        ", score=" + score +
+        ", level=" + level +
+        ", type=" + type +
+        ", objects=" + objects +
+        '}';
   }
 }

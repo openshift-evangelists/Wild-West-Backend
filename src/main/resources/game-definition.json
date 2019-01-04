@@ -1,0 +1,12 @@
+{
+  "name": "BeerGame",
+  "objects": [{
+    "name": "item1",
+    "value": 10
+  },
+    {
+      "name": "item2",
+      "value": 20
+    }
+  ]
+}
