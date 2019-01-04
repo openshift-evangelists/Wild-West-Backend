@@ -6,6 +6,9 @@ import com.openshift.wildwest.models.GameType;
 
 import java.util.Map;
 
+/**
+ * These is the API, so every change done in this file might impact the Fronentd
+ */
 public interface GameController {
   Game createGame();
 

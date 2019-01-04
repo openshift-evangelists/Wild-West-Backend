@@ -2,6 +2,9 @@ package com.openshift.wildwest.models;
 
 import java.util.Objects;
 
+/**
+ * These is Game object. Every change done in this file might impact the Fronentd
+ */
 public class GameObject {
 
   private String id;

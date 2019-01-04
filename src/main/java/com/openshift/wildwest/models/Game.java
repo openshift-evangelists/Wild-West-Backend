@@ -6,6 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * These is Game object. Every change done in this file might impact the Fronentd
+ */
 public class Game {
 
   private String id;

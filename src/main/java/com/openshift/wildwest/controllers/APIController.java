@@ -11,12 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.openshift.wildwest.models.Game;
 import com.openshift.wildwest.models.GameObject;
 
-// oc policy add-role-to-user view system:serviceaccount:wildwest:default where wildwest
-// is the project name
-
-// To enable destructrive mode, a different permission needs to be added 
-// oc policy add-role-to-user edit system:serviceaccount:wildwest:default
-
+/**
+ * These is the API, so every change done in this file might impact the Fronentd
+ */
 @RestController
 public class APIController {
   @Autowired
