@@ -31,18 +31,21 @@ public class DummyGameControllerImpl implements GameController {
     objectTypes.add(OBJ3);
     objectTypes.add(OBJ4);
 
+  }
+  private static final GameType gameType = new GameType("BeerGame", objectTypes);
+
+  private static void initGame(){
     for (int i=1;i<=MAX+4;i++) objects.add(new GameObject("obj1_"+i, OBJ1));
     for (int i=1;i<=MAX+3;i++) objects.add(new GameObject("obj2_"+i, OBJ2));
     for (int i=1;i<=MAX+2;i++) objects.add(new GameObject("obj3_"+i, OBJ3));
     for (int i=1;i<=MAX+1;i++) objects.add(new GameObject("obj4_"+i, OBJ4));
 
     game.setObjects(objects);
-
   }
-  private static final GameType gameType = new GameType("BeerGame", objectTypes);
 
   @Override
   public Game createGame() {
+    initGame();
     return game;
   }
 
