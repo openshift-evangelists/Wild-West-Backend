@@ -7,7 +7,6 @@ import com.openshift.wildwest.models.PlatformObject;
 import io.fabric8.kubernetes.api.model.PersistentVolumeClaim;
 import io.fabric8.kubernetes.api.model.Pod;
 import io.fabric8.kubernetes.api.model.Service;
-import io.fabric8.kubernetes.api.model.extensions.Deployment;
 import io.fabric8.openshift.api.model.Build;
 import io.fabric8.openshift.api.model.BuildConfig;
 import io.fabric8.openshift.api.model.DeploymentConfig;
@@ -27,9 +26,6 @@ public class PlatformObjectHelper {
 
 		ArrayList<PlatformObject> platformObjects = new ArrayList<>();
 		platformObjects.addAll(this.getPods());
-		//platformObjects.addAll(this.getBuilds());
-		//platformObjects.addAll(this.getDeploymentConfigs());
-		//platformObjects.addAll(this.getBuildConfigs());
 		platformObjects.addAll(this.getPVs());
 		platformObjects.addAll(this.getServices());
 		platformObjects.addAll(this.getRoutes());
