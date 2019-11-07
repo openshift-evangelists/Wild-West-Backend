@@ -67,12 +67,5 @@ public class GameController {
 		}
 		return currentMode;
 	}
-	/*
-	private PlatformObject getRandomObject() {
-		PlatformObject randomObject = new PlatformObject();
-		
-		return randomObject;
-	}
-	*/
 
 }
